@@ -9,10 +9,10 @@ type PageProps = {
 };
 const Page = async ({ params }: PageProps) => {
   const { id } = await params;
-  const blogContent = await notion2markdown(id);
+  const { title, content } = await notion2markdown(id);
   return (
     <MainLayout>
-      <BlogContent content={blogContent.parent} />
+      <BlogContent content={content} title={title} />
     </MainLayout>
   );
 };

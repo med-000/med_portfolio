@@ -5,7 +5,7 @@ import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 export type Blog = {
   id: string;
   title: string;
-  pageId: string;
+  mentionPageId: string;
   public: boolean;
   qiita: boolean;
   zenn: boolean;
@@ -41,21 +41,21 @@ export const isPage = (item: unknown): item is PageObjectResponse => {
 const getMentionTitle = (
   page: PageObjectResponse,
   name: string
-): { title: string; pageId: string } => {
+): { title: string; mentionPageId: string } => {
   const prop = page.properties[name];
 
   if (!prop || prop.type !== "title") {
-    return { title: "", pageId: "" };
+    return { title: "", mentionPageId: "" };
   }
 
   const item = prop.title[0];
   if (!item || item.type !== "mention" || item.mention.type !== "page") {
-    return { title: "", pageId: "" };
+    return { title: "", mentionPageId: "" };
   }
 
   return {
     title: item.plain_text ?? "",
-    pageId: item.mention.page.id,
+    mentionPageId: item.mention.page.id,
   };
 };
 
@@ -73,12 +73,12 @@ export const fetchBlogPages = async () => {
 };
 
 export const normalizeBlog = (page: PageObjectResponse): Blog => {
-  const { title, pageId } = getMentionTitle(page, BLOG_PROPERTIES.title);
+  const { title, mentionPageId } = getMentionTitle(page, BLOG_PROPERTIES.title);
 
   return {
     id: page.id,
     title,
-    pageId,
+    mentionPageId,
     public: getCheckbox(page, BLOG_PROPERTIES.public),
     qiita: getCheckbox(page, BLOG_PROPERTIES.qiita),
     zenn: getCheckbox(page, BLOG_PROPERTIES.zenn),
@@ -95,7 +95,25 @@ export const notion2markdown = async (pageId: string) => {
     notionClient: notion,
   });
 
+  const title = await getPageTitle(pageId);
   const mdBlocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdBlocks);
-  return mdString;
+  return {
+    title,
+    content: mdString.parent,
+  };
+};
+
+export const getPageTitle = async (pageId: string): Promise<string> => {
+  const page = await notion.pages.retrieve({ page_id: pageId });
+
+  if (!("properties" in page)) return "";
+
+  const titleProp = Object.values(page.properties).find(
+    (p): p is Extract<typeof p, { type: "title" }> => p.type === "title"
+  );
+
+  if (!titleProp) return "";
+
+  return titleProp.title.map((t) => t.plain_text).join("");
 };

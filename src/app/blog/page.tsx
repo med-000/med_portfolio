@@ -11,7 +11,7 @@ const Page = async () => {
         <ul className='whitespace-pre-wrap text-sm'>
           {blogs.map((blog) => (
             <li key={blog.id}>
-              <BlogArticle title={blog.title} pageId={blog.pageId} />
+              <BlogArticle title={blog.title} pageId={blog.mentionPageId} />
             </li>
           ))}
         </ul>
