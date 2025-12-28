@@ -1,11 +1,23 @@
 import { MainLayout } from "@/components/main/main-layout";
+import { BlogArticle } from "@/components/blog/blog-article";
 
-const Page = () => {
-    return (
-        <MainLayout>
-            <div className="min-h-screen">this is aboutpage</div>
-        </MainLayout>
-    );
+import { getBlogs } from "@/lib/notion/notion";
+
+const Page = async () => {
+  const blogs = await getBlogs();
+  return (
+    <MainLayout>
+      <div className='min-h-screen flex flex-col gap-3'>
+        <ul className='whitespace-pre-wrap text-sm'>
+          {blogs.map((blog) => (
+            <li key={blog.id}>
+              <BlogArticle title={blog.title} pageId={blog.pageId} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </MainLayout>
+  );
 };
 
 export default Page;

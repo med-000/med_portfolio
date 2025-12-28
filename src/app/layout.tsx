@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Oxanium, Outfit, Sawarabi_Gothic } from "next/font/google";
-import { CursorTrail } from "@/components/cursor-trail";
 
 const oxanium = Oxanium({
     subsets: ["latin"],
@@ -34,7 +33,6 @@ export default function RootLayout({
             <body
                 className={`${oxanium.variable} ${outfit.variable} ${sawarabi.variable} antialiased`}
             >
-                <CursorTrail />
                 {children}
             </body>
         </html>
