@@ -68,6 +68,12 @@ export const fetchBlogPages = async () => {
   const databaseId = process.env.NOTION_BLOG_DATABASE_ID!;
   const response = await notion.databases.query({
     database_id: databaseId,
+    filter: {
+      property: "public",
+      checkbox: {
+        equals: true,
+      },
+    },
   });
   return response.results;
 };
