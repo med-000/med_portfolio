@@ -15,7 +15,7 @@ importers:
         specifier: ^5.2.8
         version: 5.2.8
       '@notionhq/client':
-        specifier: ^2.2.14
+        specifier: 2.2.14
         version: 2.2.14
       '@radix-ui/react-aspect-ratio':
         specifier: ^1.1.8
