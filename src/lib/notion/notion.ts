@@ -74,6 +74,12 @@ export const fetchBlogPages = async () => {
         equals: true,
       },
     },
+    sorts: [
+      {
+        timestamp: "created_time",
+        direction: "descending",
+      },
+    ],
   });
   return response.results;
 };
