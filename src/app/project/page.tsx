@@ -13,6 +13,14 @@ const Page = async () => {
               <div key={project.id}>
                 <div>{projectPage.title}</div>
                 <div>{projectPage.content}</div>
+                <div>{projectPage.imageFile}</div>
+                <div>--------</div>
+                <div>{project.url}</div>
+                <div>
+                  {project.tags.map((tag) => (
+                    <div key={tag.id}>{tag.name}</div>
+                  ))}
+                </div>
               </div>
             );
           })}

@@ -15,4 +15,5 @@ export const PROJECT_PROPERTIES = {
   title: "title",
   public: "public",
   tag: "tag",
+  url: "github",
 } as const;

@@ -1,10 +1,15 @@
 export type NotionObject = {
   object: unknown;
 };
+export type multiSelectItem = {
+  id: string;
+  name: string;
+};
 export type Page = {
   id: string;
   title: string;
   content: string;
+  imageFile: string;
 };
 export type Blog = {
   id: string;
@@ -18,5 +23,6 @@ export type Project = {
   id: string;
   title: string;
   public: boolean;
-  tag: object;
+  tags: multiSelectItem[];
+  url: string;
 };

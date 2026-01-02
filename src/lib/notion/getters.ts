@@ -3,8 +3,9 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { n2m } from "./client";
-
 import { isPageMention } from "./guards";
+import { multiSelectItem } from "./types";
+
 export const getCheckbox = (
   page: PageObjectResponse,
   name: string
@@ -15,13 +16,16 @@ export const getCheckbox = (
   return prop.checkbox;
 };
 
-export const getMultiSelect = (
+export const getMultiSelectList = (
   page: PageObjectResponse,
   name: string
-): object => {
+): multiSelectItem[] => {
   const prop = page.properties[name];
   if (!prop || prop.type !== "multi_select") return [];
-  return prop.multi_select;
+  return prop.multi_select.map((v) => ({
+    id: v.id,
+    name: v.name,
+  }));
 };
 
 export const getTitleObject = (
@@ -59,4 +63,25 @@ export const getPageContent = async (pageId: string) => {
   const mdBlocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdBlocks);
   return mdString.parent;
+};
+
+export const getCoverImageUrl = (page: PageObjectResponse): string => {
+  const cover = page.cover;
+  if (!cover) return "";
+
+  if (cover.type === "file") {
+    return cover.file.url;
+  }
+
+  if (cover.type === "external") {
+    return cover.external.url;
+  }
+
+  return "";
+};
+
+export const getUrl = (page: PageObjectResponse, name: string): string => {
+  const prop = page.properties[name];
+  if (!prop || prop.type !== "url") return "";
+  return prop.url ?? "";
 };

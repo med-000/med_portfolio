@@ -5,7 +5,9 @@ import {
   getMentionTitle,
   getPageContent,
   getCheckbox,
-  getMultiSelect,
+  getMultiSelectList,
+  getCoverImageUrl,
+  getUrl,
 } from "./getters";
 
 import {
@@ -21,6 +23,7 @@ export const normalizePage = async (
     id: page.id,
     title: getTitleName(page, PAGE_PROPERTIES.title),
     content: await getPageContent(page.id),
+    imageFile: getCoverImageUrl(page),
   };
 };
 
@@ -40,6 +43,7 @@ export const normalizeProject = (page: PageObjectResponse): Project => {
     id: page.id,
     title: getTitleName(page, PROJECT_PROPERTIES.title),
     public: getCheckbox(page, PROJECT_PROPERTIES.public),
-    tag: getMultiSelect(page, PROJECT_PROPERTIES.tag),
+    tags: getMultiSelectList(page, PROJECT_PROPERTIES.tag),
+    url: getUrl(page, PROJECT_PROPERTIES.url),
   };
 };
