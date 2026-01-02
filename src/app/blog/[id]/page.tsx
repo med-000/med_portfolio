@@ -1,6 +1,6 @@
 import { MainLayout } from "@/components/main/main-layout";
 import { BlogContent } from "@/components/blog/blog-content";
-import { notion2markdown } from "@/lib/notion/notion";
+import { getPages } from "@/lib/notion/notion";
 
 type PageProps = {
   params: Promise<{
@@ -9,7 +9,7 @@ type PageProps = {
 };
 const Page = async ({ params }: PageProps) => {
   const { id } = await params;
-  const { title, content } = await notion2markdown(id);
+  const { title, content } = await getPages(id);
   return (
     <MainLayout>
       <BlogContent content={content} title={title} />
