@@ -23,6 +23,6 @@ export type Project = {
   id: string;
   title: string;
   public: boolean;
-  tags: multiSelectItem[];
   url: string;
+  relation: string[];
 };

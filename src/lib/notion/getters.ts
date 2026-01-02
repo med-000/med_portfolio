@@ -85,3 +85,12 @@ export const getUrl = (page: PageObjectResponse, name: string): string => {
   if (!prop || prop.type !== "url") return "";
   return prop.url ?? "";
 };
+
+export const getRelationIds = (
+  page: PageObjectResponse,
+  name: string
+): string[] => {
+  const prop = page.properties[name];
+  if (!prop || prop.type !== "relation") return [];
+  return prop.relation.map((r) => r.id);
+};

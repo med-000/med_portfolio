@@ -8,6 +8,7 @@ import {
   getMultiSelectList,
   getCoverImageUrl,
   getUrl,
+  getRelationIds,
 } from "./getters";
 
 import {
@@ -43,7 +44,7 @@ export const normalizeProject = (page: PageObjectResponse): Project => {
     id: page.id,
     title: getTitleName(page, PROJECT_PROPERTIES.title),
     public: getCheckbox(page, PROJECT_PROPERTIES.public),
-    tags: getMultiSelectList(page, PROJECT_PROPERTIES.tag),
     url: getUrl(page, PROJECT_PROPERTIES.url),
+    relation: getRelationIds(page, PROJECT_PROPERTIES.relation),
   };
 };
