@@ -11,28 +11,7 @@ export const fetchPage = async (pageId: string) => {
   return response;
 };
 
-export const fetchBlogDB = async () => {
-  const databaseId = process.env.NOTION_BLOG_DATABASE_ID!;
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: "public",
-      checkbox: {
-        equals: true,
-      },
-    },
-    sorts: [
-      {
-        timestamp: "created_time",
-        direction: "descending",
-      },
-    ],
-  });
-  return response.results;
-};
-
-export const fetchProjectDB = async () => {
-  const databaseId = process.env.NOTION_PROJECT_DATABASE_ID!;
+export const fetchDB = async (databaseId: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {

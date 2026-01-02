@@ -2,7 +2,7 @@ import type { Page, Blog, Project } from "@/lib/notion/types";
 import { cache } from "react";
 import { isPage } from "./guards";
 import { normalizePage, normalizeBlog, normalizeProject } from "./normalizers";
-import { fetchBlogDB, fetchProjectDB, fetchPage } from "./fetchers";
+import { fetchDB, fetchPage } from "./fetchers";
 
 export const getPages = cache(async (pageId: string): Promise<Page> => {
   const pages = await fetchPage(pageId);
@@ -10,11 +10,11 @@ export const getPages = cache(async (pageId: string): Promise<Page> => {
 });
 
 export const getBlogs = cache(async (): Promise<Blog[]> => {
-  const pages = await fetchBlogDB();
+  const pages = await fetchDB(`${process.env.NOTION_BLOG_DATABASE_ID}`);
   return pages.filter(isPage).map(normalizeBlog);
 });
 
 export const getProjects = cache(async (): Promise<Project[]> => {
-  const pages = await fetchProjectDB();
+  const pages = await fetchDB(`${process.env.NOTION_PROJECT_DATABASE_ID}`);
   return pages.filter(isPage).map(normalizeProject);
 });

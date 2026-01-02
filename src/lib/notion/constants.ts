@@ -17,3 +17,10 @@ export const PROJECT_PROPERTIES = {
   url: "github",
   relation: "techstack",
 } as const;
+
+export const TIMELIND_PROPERTIES = {
+  title: "title",
+  public: "public",
+  date: "year/month",
+  relation: "techstack",
+};
