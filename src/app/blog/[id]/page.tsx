@@ -1,6 +1,6 @@
 import { MainLayout } from "@/components/main/main-layout";
 import { BlogContent } from "@/components/blog/blog-content";
-import { getPages } from "@/lib/notion/notion";
+import { getPages } from "@/lib/notion";
 
 type PageProps = {
   params: Promise<{

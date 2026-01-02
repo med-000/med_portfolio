@@ -1,7 +1,7 @@
 import { MainLayout } from "@/components/main/main-layout";
 import { BlogArticle } from "@/components/blog/blog-article";
 
-import { getBlogs } from "@/lib/notion/notion";
+import { getBlogs } from "@/lib/notion";
 
 const Page = async () => {
   const blogs = await getBlogs();
