@@ -1,8 +1,8 @@
 import { MainLayout } from "@/components/main/main-layout";
-import { getTimeline } from "@/lib/notion";
+import { getTimelines } from "@/lib/notion";
 
 const Page = async () => {
-  const timelines = await getTimeline();
+  const timelines = await getTimelines();
   return (
     <MainLayout>
       <div className='min-h-screen'>

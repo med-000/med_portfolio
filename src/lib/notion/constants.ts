@@ -15,12 +15,19 @@ export const PROJECT_PROPERTIES = {
   title: "title",
   public: "public",
   url: "github",
-  relation: "techstack",
+  techstack: "techstack",
 } as const;
 
 export const TIMELINE_PROPERTIES = {
   title: "title",
   public: "public",
   date: "year/month",
-  relation: "techstack",
+  techstack: "techstack",
+};
+export const TECHSTACK_PROPERTIES = {
+  title: "title",
+  public: "public",
+  techStackType: "techStackType",
+  projects: "projects",
+  timeline: "timeline",
 };

@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import type { Page, Blog, Project, Timeline } from "./types";
+import type { Page, Blog, Project, Timeline, Techstack } from "./types";
 import {
   getTitleName,
   getMentionTitle,
@@ -16,6 +16,7 @@ import {
   BLOG_PROPERTIES,
   PROJECT_PROPERTIES,
   TIMELINE_PROPERTIES,
+  TECHSTACK_PROPERTIES,
 } from "./constants";
 
 export const normalizePage = async (
@@ -46,7 +47,7 @@ export const normalizeProject = (page: PageObjectResponse): Project => {
     title: getTitleName(page, PROJECT_PROPERTIES.title),
     public: getCheckbox(page, PROJECT_PROPERTIES.public),
     url: getUrl(page, PROJECT_PROPERTIES.url),
-    relation: getRelationIds(page, PROJECT_PROPERTIES.relation),
+    techstack: getRelationIds(page, PROJECT_PROPERTIES.techstack),
   };
 };
 
@@ -56,5 +57,17 @@ export const normalizeTimeline = (page: PageObjectResponse): Timeline => {
     title: getTitleName(page, TIMELINE_PROPERTIES.title),
     public: getCheckbox(page, TIMELINE_PROPERTIES.public),
     date: getMultiSelectList(page, TIMELINE_PROPERTIES.date),
+    techstack: getRelationIds(page, TIMELINE_PROPERTIES.techstack),
+  };
+};
+
+export const normalizeTechstach = (page: PageObjectResponse): Techstack => {
+  return {
+    id: page.id,
+    title: getTitleName(page, TECHSTACK_PROPERTIES.title),
+    public: getCheckbox(page, TECHSTACK_PROPERTIES.public),
+    techStackType: getRelationIds(page, TECHSTACK_PROPERTIES.techStackType),
+    projects: getRelationIds(page, TECHSTACK_PROPERTIES.projects),
+    timeline: getRelationIds(page, TECHSTACK_PROPERTIES.timeline),
   };
 };

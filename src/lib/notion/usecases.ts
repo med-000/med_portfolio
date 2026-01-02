@@ -24,7 +24,7 @@ export const getProjects = cache(async (): Promise<Project[]> => {
   return pages.filter(isPage).map(normalizeProject);
 });
 
-export const getTimeline = cache(async (): Promise<Timeline[]> => {
+export const getTimelines = cache(async (): Promise<Timeline[]> => {
   const pages = await fetchDB(`${process.env.NOTION_TIMELINE_DATABASE_ID}`);
   return pages.filter(isPage).map(normalizeTimeline);
 });

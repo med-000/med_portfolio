@@ -24,11 +24,20 @@ export type Project = {
   title: string;
   public: boolean;
   url: string;
-  relation: string[];
+  techstack: string[];
 };
 export type Timeline = {
   id: string;
   title: string;
   public: boolean;
   date: multiSelectItem[];
+  techstack: string[];
+};
+export type Techstack = {
+  id: string;
+  title: string;
+  public: boolean;
+  techStackType: string[];
+  projects: string[];
+  timeline: string[];
 };

@@ -9,7 +9,7 @@ const Page = async () => {
       const projectPage = await getPages(project.id);
 
       const relatedPages = await Promise.all(
-        project.relation.map((relationId) => getPages(relationId))
+        project.techstack.map((techstackId) => getPages(techstackId))
       );
 
       return {
