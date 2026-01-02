@@ -18,7 +18,7 @@ export const PROJECT_PROPERTIES = {
   relation: "techstack",
 } as const;
 
-export const TIMELIND_PROPERTIES = {
+export const TIMELINE_PROPERTIES = {
   title: "title",
   public: "public",
   date: "year/month",

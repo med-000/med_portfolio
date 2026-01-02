@@ -1,5 +1,5 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import type { Page, Blog, Project } from "./types";
+import type { Page, Blog, Project, Timeline } from "./types";
 import {
   getTitleName,
   getMentionTitle,
@@ -15,6 +15,7 @@ import {
   PAGE_PROPERTIES,
   BLOG_PROPERTIES,
   PROJECT_PROPERTIES,
+  TIMELINE_PROPERTIES,
 } from "./constants";
 
 export const normalizePage = async (
@@ -46,5 +47,14 @@ export const normalizeProject = (page: PageObjectResponse): Project => {
     public: getCheckbox(page, PROJECT_PROPERTIES.public),
     url: getUrl(page, PROJECT_PROPERTIES.url),
     relation: getRelationIds(page, PROJECT_PROPERTIES.relation),
+  };
+};
+
+export const normalizeTimeline = (page: PageObjectResponse): Timeline => {
+  return {
+    id: page.id,
+    title: getTitleName(page, TIMELINE_PROPERTIES.title),
+    public: getCheckbox(page, TIMELINE_PROPERTIES.public),
+    date: getMultiSelectList(page, TIMELINE_PROPERTIES.date),
   };
 };

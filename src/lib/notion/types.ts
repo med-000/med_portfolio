@@ -26,3 +26,9 @@ export type Project = {
   url: string;
   relation: string[];
 };
+export type Timeline = {
+  id: string;
+  title: string;
+  public: boolean;
+  date: multiSelectItem[];
+};
