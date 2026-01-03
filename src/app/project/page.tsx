@@ -1,5 +1,6 @@
 import { MainLayout } from "@/components/main/main-layout";
 import { getProjects, getPages } from "@/lib/notion";
+import { ProjectCard } from "@/components/project/project-card";
 
 const Page = async () => {
   const projects = await getProjects();
@@ -22,24 +23,20 @@ const Page = async () => {
 
   return (
     <MainLayout>
-      <div className='min-h-screen'>
-        {projectsWithRelations.map(({ project, projectPage, relatedPages }) => (
-          <div key={project.id}>
-            <div>{projectPage.title}</div>
-            <div>{projectPage.content}</div>
-
-            {projectPage.imageFile && <img src={projectPage.imageFile} />}
-
-            <div>--------</div>
-            <div>{project.url}</div>
-
-            <div>
-              {relatedPages.map((p) => (
-                <div key={p.id}>{p.title}</div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className='min-h-screen flex flex-col gap-5'>
+        <div className='text-center text-3xl'>Projects</div>
+        <div className='grid gap-6 grid-cols-[repeat(auto-fill,300px)] justify-center'>
+          {projectsWithRelations.map(
+            ({ project, projectPage, relatedPages }) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                projectPage={projectPage}
+                relatedPages={relatedPages}
+              />
+            )
+          )}
+        </div>
       </div>
     </MainLayout>
   );

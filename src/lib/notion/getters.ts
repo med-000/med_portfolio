@@ -94,3 +94,9 @@ export const getRelationIds = (
   if (!prop || prop.type !== "relation") return [];
   return prop.relation.map((r) => r.id);
 };
+
+export const getText = (page: PageObjectResponse, name: string): string => {
+  const prop = page.properties[name];
+  if (!prop || prop.type !== "rich_text") return "";
+  return prop.rich_text.map((t) => t.plain_text).join("");
+};

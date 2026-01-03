@@ -23,7 +23,10 @@ export type Project = {
   id: string;
   title: string;
   public: boolean;
-  url: string;
+  summary: string;
+  github: string;
+  zenn: string;
+  qiita: string;
   techstack: string[];
 };
 export type Timeline = {

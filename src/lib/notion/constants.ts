@@ -14,7 +14,10 @@ export const BLOG_PROPERTIES = {
 export const PROJECT_PROPERTIES = {
   title: "title",
   public: "public",
-  url: "github",
+  summary: "summary",
+  github: "github",
+  zenn: "zenn",
+  qiita: "qiita",
   techstack: "techstack",
 } as const;
 

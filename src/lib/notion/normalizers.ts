@@ -9,6 +9,7 @@ import {
   getCoverImageUrl,
   getUrl,
   getRelationIds,
+  getText,
 } from "./getters";
 
 import {
@@ -46,7 +47,10 @@ export const normalizeProject = (page: PageObjectResponse): Project => {
     id: page.id,
     title: getTitleName(page, PROJECT_PROPERTIES.title),
     public: getCheckbox(page, PROJECT_PROPERTIES.public),
-    url: getUrl(page, PROJECT_PROPERTIES.url),
+    summary: getText(page, PROJECT_PROPERTIES.summary),
+    github: getUrl(page, PROJECT_PROPERTIES.github),
+    zenn: getUrl(page, PROJECT_PROPERTIES.zenn),
+    qiita: getUrl(page, PROJECT_PROPERTIES.qiita),
     techstack: getRelationIds(page, PROJECT_PROPERTIES.techstack),
   };
 };
