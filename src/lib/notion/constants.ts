@@ -24,7 +24,7 @@ export const PROJECT_PROPERTIES = {
 export const TIMELINE_PROPERTIES = {
   title: "title",
   public: "public",
-  date: "year/month",
+  date: "date",
   techstack: "techstack",
 };
 export const TECHSTACK_PROPERTIES = {

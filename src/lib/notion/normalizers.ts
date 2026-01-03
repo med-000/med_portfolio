@@ -1,5 +1,12 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import type { Page, Blog, Project, Timeline, Techstack } from "./types";
+import type {
+  Page,
+  Blog,
+  Project,
+  Timeline,
+  Techstack,
+  TimelineYearGroup,
+} from "./types";
 import {
   getTitleName,
   getMentionTitle,
@@ -10,6 +17,7 @@ import {
   getUrl,
   getRelationIds,
   getText,
+  getDateRange,
 } from "./getters";
 
 import {
@@ -60,7 +68,7 @@ export const normalizeTimeline = (page: PageObjectResponse): Timeline => {
     id: page.id,
     title: getTitleName(page, TIMELINE_PROPERTIES.title),
     public: getCheckbox(page, TIMELINE_PROPERTIES.public),
-    date: getMultiSelectList(page, TIMELINE_PROPERTIES.date),
+    date: getDateRange(page, TIMELINE_PROPERTIES.date),
     techstack: getRelationIds(page, TIMELINE_PROPERTIES.techstack),
   };
 };
@@ -74,4 +82,28 @@ export const normalizeTechstach = (page: PageObjectResponse): Techstack => {
     projects: getRelationIds(page, TECHSTACK_PROPERTIES.projects),
     timeline: getRelationIds(page, TECHSTACK_PROPERTIES.timeline),
   };
+};
+export const normalizeTimelinesByYear = (
+  timelines: Timeline[]
+): TimelineYearGroup[] => {
+  const map = new Map<number, Timeline[]>();
+  for (const timeline of timelines) {
+    if (!timeline.date.isValid) continue;
+    const year = timeline.date.start.year;
+    if (!map.has(year)) {
+      map.set(year, []);
+    }
+    map.get(year)!.push(timeline);
+  }
+  const groups: TimelineYearGroup[] = Array.from(map.entries()).map(
+    ([year, list]) => ({
+      year,
+
+      timelines: list.sort((a, b) => {
+        return b.date.start.month - a.date.start.month;
+      }),
+    })
+  );
+  groups.sort((a, b) => b.year - a.year);
+  return groups;
 };

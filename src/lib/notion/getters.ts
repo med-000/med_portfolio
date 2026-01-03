@@ -4,7 +4,7 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 import { n2m } from "./client";
 import { isPageMention } from "./guards";
-import { multiSelectItem } from "./types";
+import type { multiSelectItem, DateRange } from "./types";
 
 export const getCheckbox = (
   page: PageObjectResponse,
@@ -99,4 +99,37 @@ export const getText = (page: PageObjectResponse, name: string): string => {
   const prop = page.properties[name];
   if (!prop || prop.type !== "rich_text") return "";
   return prop.rich_text.map((t) => t.plain_text).join("");
+};
+
+export const getDateRange = (
+  page: PageObjectResponse,
+  name: string
+): DateRange => {
+  const prop = page.properties[name];
+  if (!prop || prop.type !== "date" || !prop.date?.start) {
+    return {
+      start: { year: 0, month: 0 },
+      isValid: false,
+    };
+  }
+
+  const startDate = new Date(prop.date.start);
+
+  const result: DateRange = {
+    start: {
+      year: startDate.getFullYear(),
+      month: startDate.getMonth() + 1,
+    },
+    isValid: true,
+  };
+
+  if (prop.date.end) {
+    const endDate = new Date(prop.date.end);
+    result.end = {
+      year: endDate.getFullYear(),
+      month: endDate.getMonth() + 1,
+    };
+  }
+
+  return result;
 };

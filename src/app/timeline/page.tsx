@@ -1,23 +1,19 @@
 import { MainLayout } from "@/components/main/main-layout";
-import { getTimelines } from "@/lib/notion";
+import { TimelineGroupYear } from "@/components/timeline/timeline-year-group";
+import { getTimelinesByYear } from "@/lib/notion";
 
 const Page = async () => {
-  const timelines = await getTimelines();
+  const timelinesByYear = await getTimelinesByYear();
   return (
     <MainLayout>
-      <div className='min-h-screen'>
-        {timelines.map((timeline) => {
-          return (
-            <div key={timeline.id}>
-              <div>{timeline.title}</div>
-              <div>
-                {timeline.date.map((date) => (
-                  <div key={date.id}>{date.name}</div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      <div className='min-h-screen m-5'>
+        {timelinesByYear.map((group) => (
+          <TimelineGroupYear
+            key={group.year}
+            year={group.year}
+            timelines={group.timelines}
+          ></TimelineGroupYear>
+        ))}
       </div>
     </MainLayout>
   );

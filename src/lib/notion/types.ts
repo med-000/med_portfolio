@@ -5,6 +5,20 @@ export type multiSelectItem = {
   id: string;
   name: string;
 };
+export type Date = {
+  year: number;
+  month: number;
+};
+
+export type DateRange = {
+  start: Date;
+  end?: Date;
+  isValid: boolean;
+};
+export type TimelineYearGroup = {
+  year: number;
+  timelines: Timeline[];
+};
 export type Page = {
   id: string;
   title: string;
@@ -33,7 +47,7 @@ export type Timeline = {
   id: string;
   title: string;
   public: boolean;
-  date: multiSelectItem[];
+  date: DateRange;
   techstack: string[];
 };
 export type Techstack = {

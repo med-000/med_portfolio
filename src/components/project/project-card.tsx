@@ -41,8 +41,8 @@ export const ProjectCard = async ({
             </AspectRatio>
           </CardHeader>
           <CardContent className='flex-1 flex-col'>
-            <h1 className='font-bold text-2xl'>{project.title}</h1>
-            <p>{project.summary}</p>
+            <h1 className='font-bold text-2xl pb-2'>{project.title}</h1>
+            <p className='text-neutral-400'>{project.summary}</p>
           </CardContent>
           <CardFooter className='p-3'>
             <p className='flex gap-3'>
