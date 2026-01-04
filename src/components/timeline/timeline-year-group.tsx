@@ -28,10 +28,10 @@ export const TimelineGroupYear = async ({
 
   return (
     <div className='px-8 md:px-16 lg:px-24'>
-      <div className='space-y-6 max-w-5xl mx-auto'>
+      <div className='space-y-6'>
         <div className='grid grid-cols-[24px_1fr] gap-4'>
           <div className='flex justify-center'>
-            <div className='text-xl font-bold'>{year}</div>
+            <div className='text-2xl font-bold'>{year}</div>
           </div>
           <div />
         </div>

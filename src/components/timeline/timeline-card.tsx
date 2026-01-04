@@ -5,6 +5,7 @@ import {
   CardFooter,
   CardContent,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 type TimelineCardProps = {
   timelineTitle: string;
   timelineDate: DateRange;
@@ -19,19 +20,24 @@ export const TimelineCard = async ({
   relatedPages,
 }: TimelineCardProps) => {
   return (
-    <Card className='min-w-[60vw]'>
-      <CardHeader>
-        {timelineTitle}
-        {timelineDate.start.month}
-      </CardHeader>
-      <CardContent>{timelinePage.content}</CardContent>
-      <CardFooter>
-        {relatedPages.map((tag) => (
-          <div className='outline' key={tag.id}>
-            {tag.title}
+    <Card className='gap-0 py-3'>
+      <CardContent className='flex flex-col gap-2'>
+        <div className='flex justify-between '>
+          <div className='text-xl font-bold'>{timelineTitle}</div>
+          <div>
+            {timelineDate.start.month}
+            {timelineDate.end && <>〜{timelineDate.end.month}</>}月
           </div>
-        ))}
-      </CardFooter>
+        </div>
+        <div>{timelinePage.content}</div>
+        <div>
+          {relatedPages.map((tag) => (
+            <Badge className='outline' variant='secondary' key={tag.id}>
+              <div>{tag.title}</div>
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
     </Card>
   );
 };
