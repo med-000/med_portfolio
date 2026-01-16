@@ -8,6 +8,7 @@ export const fetchPage = async (pageId: string) => {
     },
     next: {
       tags: [`notion-page-${pageId}`],
+      revalidate: 1,
     },
   });
 
@@ -50,15 +51,14 @@ export const fetchDB = async (databaseId: string) => {
       }),
       next: {
         tags: [`notion-db-${databaseId}`],
+        revalidate: 1,
       },
     }
   );
 
   if (!res.ok) {
-    throw new Error(`Failed to query database: ${databaseId}`);
+    throw new Error(`Failed to fetch database: ${databaseId}`);
   }
 
-  const response = await res.json();
-
-  return response.results;
+  return (await res.json()).results;
 };

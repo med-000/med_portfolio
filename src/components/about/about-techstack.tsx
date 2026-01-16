@@ -3,30 +3,21 @@ export const AboutTechstack = async () => {
   const techstacks = await getTechstacks();
   const techstackTypes = await getTechstackTypes();
 
-  const techstacksWithRelations = await Promise.all(
-    techstacks.map(async (techstack) => {
-      const techstackPage = await getPages(techstack.id);
-
-      const techstackTypePages = await Promise.all(
-        techstack.techstackType.map((techstackTypeId) =>
-          getPages(techstackTypeId)
-        )
-      );
-
-      return {
-        techstack,
-        techstackPage,
-        techstackTypePages,
-      };
-    })
+  const publicTechstackIds = new Set(
+    techstacks
+      .filter((techstack) => techstack.public === true)
+      .map((techstack) => techstack.id)
   );
+
   const techstackTypesWithRelations = await Promise.all(
     techstackTypes.map(async (techstackType) => {
       const techstackTypePage = await getPages(techstackType.id);
 
-      const techstackPages = await Promise.all(
-        techstackType.techstack.map((techstackId) => getPages(techstackId))
-      );
+      const techstackPages = (
+        await Promise.all(
+          techstackType.techstack.map((techstackId) => getPages(techstackId))
+        )
+      ).filter((page) => publicTechstackIds.has(page.id));
 
       return {
         techstackType,
