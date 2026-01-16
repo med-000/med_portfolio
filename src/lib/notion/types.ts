@@ -54,7 +54,13 @@ export type Techstack = {
   id: string;
   title: string;
   public: boolean;
-  techStackType: string[];
+  techstackType: string[];
   projects: string[];
   timeline: string[];
+};
+export type TechstackType = {
+  id: string;
+  title: string;
+  public: boolean;
+  techstack: string[];
 };

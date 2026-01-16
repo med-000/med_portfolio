@@ -4,6 +4,8 @@ import type {
   Project,
   Timeline,
   TimelineYearGroup,
+  Techstack,
+  TechstackType,
 } from "@/lib/notion/types";
 import { cache } from "react";
 import { isPage } from "./guards";
@@ -13,6 +15,8 @@ import {
   normalizeProject,
   normalizeTimeline,
   normalizeTimelinesByYear,
+  normalizeTechstach,
+  normalizeTechstachType,
 } from "./normalizers";
 import { fetchDB, fetchPage } from "./fetchers";
 
@@ -42,3 +46,15 @@ export const getTimelinesByYear = cache(
     return normalizeTimelinesByYear(timelines);
   }
 );
+
+export const getTechstacks = cache(async (): Promise<Techstack[]> => {
+  const pages = await fetchDB(`${process.env.NOTION_TECHSTACK_DATABASE_ID}`);
+  return pages.filter(isPage).map(normalizeTechstach);
+});
+
+export const getTechstackTypes = cache(async (): Promise<TechstackType[]> => {
+  const pages = await fetchDB(
+    `${process.env.NOTION_TECHSTACKTYPE_DATABASE_ID}`
+  );
+  return pages.filter(isPage).map(normalizeTechstachType);
+});

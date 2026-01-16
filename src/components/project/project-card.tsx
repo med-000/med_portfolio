@@ -17,12 +17,12 @@ import type { Project, Page } from "@/lib/notion";
 type ProjectCardProps = {
   project: Project;
   projectPage: Page;
-  relatedPages: Page[];
+  techstackPages: Page[];
 };
 export const ProjectCard = async ({
   project,
   projectPage,
-  relatedPages,
+  techstackPages,
 }: ProjectCardProps) => {
   return (
     <Dialog>
@@ -46,7 +46,7 @@ export const ProjectCard = async ({
           </CardContent>
           <CardFooter className='p-3'>
             <p className='flex gap-3'>
-              {relatedPages.map((tag) => (
+              {techstackPages.map((tag) => (
                 <Badge className='outline' variant='secondary' key={tag.id}>
                   {tag.title}
                 </Badge>

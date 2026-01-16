@@ -30,7 +30,12 @@ export const TIMELINE_PROPERTIES = {
 export const TECHSTACK_PROPERTIES = {
   title: "title",
   public: "public",
-  techStackType: "techStackType",
+  techstackType: "techstackType",
   projects: "projects",
   timeline: "timeline",
+};
+export const TECHSTACKTYPE_PROPERTIES = {
+  title: "title",
+  public: "public",
+  techstack: "techstack",
 };

@@ -9,14 +9,14 @@ const Page = async () => {
     projects.map(async (project) => {
       const projectPage = await getPages(project.id);
 
-      const relatedPages = await Promise.all(
+      const techstackPages = await Promise.all(
         project.techstack.map((techstackId) => getPages(techstackId))
       );
 
       return {
         project,
         projectPage,
-        relatedPages,
+        techstackPages,
       };
     })
   );
@@ -27,12 +27,12 @@ const Page = async () => {
         <div className='text-center text-3xl'>Projects</div>
         <div className='grid gap-6 grid-cols-[repeat(auto-fill,300px)] justify-center'>
           {projectsWithRelations.map(
-            ({ project, projectPage, relatedPages }) => (
+            ({ project, projectPage, techstackPages }) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 projectPage={projectPage}
-                relatedPages={relatedPages}
+                techstackPages={techstackPages}
               />
             )
           )}

@@ -5,6 +5,7 @@ import type {
   Project,
   Timeline,
   Techstack,
+  TechstackType,
   TimelineYearGroup,
 } from "./types";
 import {
@@ -26,6 +27,7 @@ import {
   PROJECT_PROPERTIES,
   TIMELINE_PROPERTIES,
   TECHSTACK_PROPERTIES,
+  TECHSTACKTYPE_PROPERTIES,
 } from "./constants";
 
 export const normalizePage = async (
@@ -78,11 +80,23 @@ export const normalizeTechstach = (page: PageObjectResponse): Techstack => {
     id: page.id,
     title: getTitleName(page, TECHSTACK_PROPERTIES.title),
     public: getCheckbox(page, TECHSTACK_PROPERTIES.public),
-    techStackType: getRelationIds(page, TECHSTACK_PROPERTIES.techStackType),
+    techstackType: getRelationIds(page, TECHSTACK_PROPERTIES.techstackType),
     projects: getRelationIds(page, TECHSTACK_PROPERTIES.projects),
     timeline: getRelationIds(page, TECHSTACK_PROPERTIES.timeline),
   };
 };
+
+export const normalizeTechstachType = (
+  page: PageObjectResponse
+): TechstackType => {
+  return {
+    id: page.id,
+    title: getTitleName(page, TECHSTACKTYPE_PROPERTIES.title),
+    public: getCheckbox(page, TECHSTACKTYPE_PROPERTIES.public),
+    techstack: getRelationIds(page, TECHSTACKTYPE_PROPERTIES.techstack),
+  };
+};
+
 export const normalizeTimelinesByYear = (
   timelines: Timeline[]
 ): TimelineYearGroup[] => {
