@@ -1,31 +1,56 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #0b1020;
-  --foreground: #e5e7eb;
-  --accent: 215 25% 65%;
-  --accent-foreground: 215 40% 12%;
+  --background: #0a0f1f;
+  --foreground: #e4e7ee;
+
+  --border: 220 18% 14%;
+  --input: 220 18% 14%;
+  --ring: 220 65% 55%;
+
+  --accent: 220 25% 92%;
+  --accent-foreground: 220 18% 12%;
+
+  --sidebar: hsl(222 24% 9%);
+  --sidebar-foreground: hsl(220 16% 72%);
+  --sidebar-primary: hsl(220 28% 86%);
+  --sidebar-primary-foreground: hsl(220 18% 12%);
+  --sidebar-accent: hsl(220 20% 15%);
+  --sidebar-accent-foreground: hsl(220 16% 72%);
+  --sidebar-border: hsl(220 18% 14%);
+  --sidebar-ring: hsl(220 65% 55%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: hsl(var(--border));
+  --color-ring: hsl(var(--ring));
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
 
   --font-oxanium: var(--font-oxanium);
   --font-outfit: var(--font-outfit);
   --font-sawarabi: var(--font-sawarabi);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #070a14;
-    --foreground: #e5e7eb;
-
-    --accent: 215 25% 65%;
-    --accent-foreground: 215 40% 12%;
+    --foreground: #e4e7ee;
   }
 }
 
@@ -33,4 +58,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sawarabi);
+}
+
+.dark {
+  --background: #070a14;
+  --foreground: #e4e7ee;
+
+  --sidebar: hsl(222 24% 7%);
+  --sidebar-foreground: hsl(220 16% 68%);
+  --sidebar-primary: hsl(220 30% 82%);
+  --sidebar-primary-foreground: hsl(220 18% 10%);
+  --sidebar-accent: hsl(220 20% 13%);
+  --sidebar-accent-foreground: hsl(220 16% 68%);
+  --sidebar-border: hsl(220 18% 12%);
+  --sidebar-ring: hsl(220 65% 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
