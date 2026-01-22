@@ -1,36 +1,61 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
 
 export const AboutMe = () => {
   return (
-    <section className='space-y-4'>
+    <section className='space-y-6'>
+      {/* Header */}
       <div className='flex items-center gap-4'>
-        <span className='text-2xl font-semibold'>About Me</span>
-        <div className='flex-1 border-b' />
+        <span className='sm:text-4xl text-2xl font-semibold'>Profile</span>
+        <div className='flex-1 border-b-2' />
       </div>
 
-      <div className='flex items-center gap-10 px-[5vw]'>
-        <Avatar className='size-30'>
-          <AvatarImage src='/images/icons/med_icon.png' alt='med avatar' />
-          <AvatarFallback>med</AvatarFallback>
-        </Avatar>
+      <div className='flex justify-center'>
+        <Card className='w-full max-w-4xl px-[5vw] py-8'>
+          <div className='flex flex-col md:flex-row gap-10 items-center'>
+            <div className='flex-1 flex flex-col gap-6 order-1'>
+              <h2 className='sm:text-6xl sm:text-left text-center text-5xl font-bold'>
+                Riki Maeda
+              </h2>
 
-        <div className='space-y-1'>
-          <p className='text-xl py-2 font-bold'> Riki Maeda</p>
-          <div className='px-5'>
-            <p>
-              <span className='font-semibold'>Nickname:</span>
-              med,前の田んぼ
-            </p>
-            <p>
-              <span className='font-semibold'>Affiliation:</span>TDU
-              (東京電機大学)
-            </p>
-            <p>
-              <span className='font-semibold'>Comment:</span>
-              バックエンド、フロントエンド、インフラなどに挑戦しています
-            </p>
+              <div className='flex justify-center md:hidden'>
+                <Avatar className='size-32'>
+                  <AvatarImage
+                    src='/images/icons/med_icon.png'
+                    alt='med avatar'
+                  />
+                  <AvatarFallback>med</AvatarFallback>
+                </Avatar>
+              </div>
+
+              <ul className='space-y-1 sm:text-xl text-lg sm:text-left text-center font-semibold text-foreground/90'>
+                <li>2005年5月9日生まれ</li>
+                <li>med-000</li>
+                <li>東京電機大学</li>
+              </ul>
+
+              <p className='sm:text-xl text-lg leading-relaxed'>
+                大学入学をきっかけにプログラミングへ興味を持ち、
+                Web開発・インフラ・インターネットの領域を中心に学習しています。
+              </p>
+
+              <p className='sm:text-xl text-lg leading-relaxed'>
+                フルスタックおよびインフラエンジニアを目指し、
+                インターンやプロダクト開発に取り組んでいます。
+              </p>
+            </div>
+
+            <div className='hidden md:flex justify-center order-2'>
+              <Avatar className='size-48 shrink-0'>
+                <AvatarImage
+                  src='/images/icons/med_icon.png'
+                  alt='med avatar'
+                />
+                <AvatarFallback>med</AvatarFallback>
+              </Avatar>
+            </div>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );

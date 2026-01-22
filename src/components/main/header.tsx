@@ -30,7 +30,7 @@ export const Header = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/timeline", label: "Timeline" },
+    // { href: "/timeline", label: "Timeline" },
     { href: "/project", label: "Projects" },
     // { href: "/blog", label: "Blogs" },
   ];
@@ -40,8 +40,8 @@ export const Header = () => {
     { href: "https://x.com/med_rk000", label: "Twitter" },
   ];
   return (
-    <header className='sticky flex items-center top-0 px-[3vw] py-[2vw] bg-background z-50'>
-      <div className='font-bold text-3xl'>med-000</div>
+    <header className='sticky flex items-center top-0 px-[5vw] py-[3vw] bg-background z-50'>
+      <div className='font-bold text-4xl'>med-000</div>
       <NavigationMenu className='ml-auto hidden md:flex'>
         <NavigationMenuList className='flex gap-2'>
           {navLinks.map((nabLink) => (

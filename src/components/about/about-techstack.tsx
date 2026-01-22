@@ -6,7 +6,7 @@ export const AboutTechstack = async () => {
   const publicTechstackIds = new Set(
     techstacks
       .filter((techstack) => techstack.public === true)
-      .map((techstack) => techstack.id)
+      .map((techstack) => techstack.id),
   );
 
   const techstackTypesWithRelations = await Promise.all(
@@ -15,7 +15,7 @@ export const AboutTechstack = async () => {
 
       const techstackPages = (
         await Promise.all(
-          techstackType.techstack.map((techstackId) => getPages(techstackId))
+          techstackType.techstack.map((techstackId) => getPages(techstackId)),
         )
       ).filter((page) => publicTechstackIds.has(page.id));
 
@@ -24,7 +24,7 @@ export const AboutTechstack = async () => {
         techstackTypePage,
         techstackPages,
       };
-    })
+    }),
   );
   return (
     <section className='space-y-4'>
@@ -44,7 +44,7 @@ export const AboutTechstack = async () => {
               ))}
             </ul>
           </div>
-        )
+        ),
       )}
     </section>
   );
