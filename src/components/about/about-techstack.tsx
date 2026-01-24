@@ -1,6 +1,5 @@
 import { getTechstacks, getPages, getTechstackTypes } from "@/lib/notion";
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
 
 export const AboutTechstack = async () => {
   const techstacks = await getTechstacks();

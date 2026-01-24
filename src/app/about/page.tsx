@@ -5,11 +5,9 @@ import { AboutTechstack } from "@/components/about/about-techstack";
 import { AboutLinks } from "@/components/about/about-links";
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 

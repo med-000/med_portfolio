@@ -13,7 +13,6 @@ import {
   getMentionTitle,
   getPageContent,
   getCheckbox,
-  getMultiSelectList,
   getCoverImageUrl,
   getUrl,
   getRelationIds,
@@ -31,7 +30,7 @@ import {
 } from "./constants";
 
 export const normalizePage = async (
-  page: PageObjectResponse
+  page: PageObjectResponse,
 ): Promise<Page> => {
   return {
     id: page.id,
@@ -87,7 +86,7 @@ export const normalizeTechstach = (page: PageObjectResponse): Techstack => {
 };
 
 export const normalizeTechstachType = (
-  page: PageObjectResponse
+  page: PageObjectResponse,
 ): TechstackType => {
   return {
     id: page.id,
@@ -98,7 +97,7 @@ export const normalizeTechstachType = (
 };
 
 export const normalizeTimelinesByYear = (
-  timelines: Timeline[]
+  timelines: Timeline[],
 ): TimelineYearGroup[] => {
   const map = new Map<number, Timeline[]>();
   for (const timeline of timelines) {
@@ -116,7 +115,7 @@ export const normalizeTimelinesByYear = (
       timelines: list.sort((a, b) => {
         return b.date.start.month - a.date.start.month;
       }),
-    })
+    }),
   );
   groups.sort((a, b) => b.year - a.year);
   return groups;
