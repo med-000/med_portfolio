@@ -44,7 +44,7 @@ export const getTimelinesByYear = cache(
   async (): Promise<TimelineYearGroup[]> => {
     const timelines = await getTimelines();
     return normalizeTimelinesByYear(timelines);
-  }
+  },
 );
 
 export const getTechstacks = cache(async (): Promise<Techstack[]> => {
@@ -54,7 +54,7 @@ export const getTechstacks = cache(async (): Promise<Techstack[]> => {
 
 export const getTechstackTypes = cache(async (): Promise<TechstackType[]> => {
   const pages = await fetchDB(
-    `${process.env.NOTION_TECHSTACKTYPE_DATABASE_ID}`
+    `${process.env.NOTION_TECHSTACKTYPE_DATABASE_ID}`,
   );
-  return pages.filter(isPage).map(normalizeTechstachType);
+  return pages.filter(isPage).map(normalizeTechstachType).reverse();
 });

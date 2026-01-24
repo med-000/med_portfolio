@@ -18,7 +18,7 @@ const Page = async () => {
     <MainLayout>
       <div className='min-h-screen '>
         <div className='flex flex-col gap-5'>
-          <div className='flex items-center gap-4 px-[5vw] py-[3vw]'>
+          <div className='flex items-center gap-4 px-[5vw] py-[2vw]'>
             <span className='sm:text-5xl text-2xl font-bold'>About Me</span>
             <div className='flex-auto border-b-2'></div>
             <Breadcrumb>

@@ -3,8 +3,7 @@ import { Card } from "@/components/ui/card";
 
 export const AboutMe = () => {
   return (
-    <section className='space-y-6'>
-      {/* Header */}
+    <section className='space-y-6 py-[1vw]'>
       <div className='flex items-center gap-4'>
         <span className='sm:text-4xl text-2xl font-semibold'>Profile</span>
         <div className='flex-1 border-b-2' />
