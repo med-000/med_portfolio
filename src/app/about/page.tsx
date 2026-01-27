@@ -3,6 +3,7 @@ import { MainLayout } from "@/components/main/main-layout";
 import { AboutMe } from "@/components/about/about-me";
 import { AboutTechstack } from "@/components/about/about-techstack";
 import { AboutLinks } from "@/components/about/about-links";
+import { AboutTimeline } from "@/components/about/about-timeline";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -38,6 +39,7 @@ const Page = async () => {
           <div className='sm:px-[15vw] px-[5vw]'>
             <AboutMe />
             <AboutTechstack />
+            <AboutTimeline />
             <AboutLinks />
           </div>
         </div>

@@ -20,24 +20,22 @@ export const TimelineCard = async ({
   relatedPages,
 }: TimelineCardProps) => {
   return (
-    <Card className='gap-0 py-3'>
-      <CardContent className='flex flex-col gap-2'>
-        <div className='flex justify-between '>
-          <div className='text-xl font-bold'>{timelineTitle}</div>
-          <div>
-            {timelineDate.start.month}
-            {timelineDate.end && <>〜{timelineDate.end.month}</>}月
-          </div>
-        </div>
-        <div>{timelinePage.content}</div>
-        <div>
-          {relatedPages.map((tag) => (
-            <Badge className='outline' variant='secondary' key={tag.id}>
-              <div>{tag.title}</div>
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
+    <Card className='flex flex-col gap-3 max-w-4xl'>
+      <div className='text-xl font-bold'>{timelineTitle}</div>
+      <div>
+        {timelineDate.start.month}
+        {timelineDate.end && <>〜{timelineDate.end.month}</>}月
+      </div>
+      <div>{timelinePage.content}</div>
+      <div>
+        {relatedPages.map((tag) => (
+          <Badge className='outline' variant='secondary' key={tag.id}>
+            <div>{tag.title}</div>
+          </Badge>
+        ))}
+      </div>
     </Card>
   );
 };
+{
+}

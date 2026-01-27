@@ -15,7 +15,7 @@ export const TimelineGroupYear = async ({
     timelines.map(async (timeline) => {
       const timelinePage = await getPages(timeline.id);
       const relatedPages = await Promise.all(
-        timeline.techstack.map((techstackId) => getPages(techstackId))
+        timeline.techstack.map((techstackId) => getPages(techstackId)),
       );
 
       return {
@@ -23,44 +23,29 @@ export const TimelineGroupYear = async ({
         timelinePage,
         relatedPages,
       };
-    })
+    }),
   );
 
   return (
-    <div className='px-8 md:px-16 lg:px-24'>
-      <div className='space-y-6'>
-        <div className='grid grid-cols-[24px_1fr] gap-4'>
-          <div className='flex justify-center'>
-            <div className='text-2xl font-bold'>{year}</div>
-          </div>
-          <div />
-        </div>
+    <section>
+      <div className='flex'>
+        <ul>
+          <div className='text-2xl font-bold'>{year}</div>
 
-        {timelinesWithRelations.map(
-          ({ timeline, timelinePage, relatedPages }, index) => {
-            const isEnd = index === timelinesWithRelations.length - 1;
-
-            return (
-              <div
-                key={timeline.id}
-                className='grid grid-cols-[24px_1fr] gap-4'
-              >
-                <div className='flex flex-col items-center'>
-                  <div className='w-3 h-3 rounded-full bg-white' />
-                  {!isEnd && <div className='w-px flex-1 bg-gray-300' />}
-                </div>
-
+          {timelinesWithRelations.map(
+            ({ timeline, timelinePage, relatedPages }) => (
+              <li key={timeline.id}>
                 <TimelineCard
                   timelineTitle={timeline.title}
                   timelineDate={timeline.date}
                   timelinePage={timelinePage}
                   relatedPages={relatedPages}
                 />
-              </div>
-            );
-          }
-        )}
+              </li>
+            ),
+          )}
+        </ul>
       </div>
-    </div>
+    </section>
   );
 };
