@@ -28,24 +28,21 @@ export const TimelineGroupYear = async ({
 
   return (
     <section>
-      <div className='flex'>
-        <ul>
-          <div className='text-2xl font-bold'>{year}</div>
-
-          {timelinesWithRelations.map(
-            ({ timeline, timelinePage, relatedPages }) => (
-              <li key={timeline.id}>
-                <TimelineCard
-                  timelineTitle={timeline.title}
-                  timelineDate={timeline.date}
-                  timelinePage={timelinePage}
-                  relatedPages={relatedPages}
-                />
-              </li>
-            ),
-          )}
-        </ul>
-      </div>
+      <ul className='flex flex-col gap-3'>
+        <div className='text-3xl font-bold'>{year}</div>
+        {timelinesWithRelations.map(
+          ({ timeline, timelinePage, relatedPages }) => (
+            <li key={timeline.id}>
+              <TimelineCard
+                timelineTitle={timeline.title}
+                timelineDate={timeline.date}
+                timelinePage={timelinePage}
+                relatedPages={relatedPages}
+              />
+            </li>
+          ),
+        )}
+      </ul>
     </section>
   );
 };

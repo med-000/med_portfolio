@@ -2,7 +2,6 @@ import Link from "next/link";
 import { MainLayout } from "@/components/main/main-layout";
 import { AboutMe } from "@/components/about/about-me";
 import { AboutTechstack } from "@/components/about/about-techstack";
-import { AboutLinks } from "@/components/about/about-links";
 import { AboutTimeline } from "@/components/about/about-timeline";
 import {
   Breadcrumb,
@@ -15,7 +14,7 @@ import {
 const Page = async () => {
   return (
     <MainLayout>
-      <div className='min-h-screen '>
+      <div className='min-h-screen py-5'>
         <div className='flex flex-col gap-5'>
           <div className='flex items-center gap-4 px-[5vw] py-[2vw]'>
             <span className='sm:text-5xl text-2xl font-bold'>About Me</span>
@@ -23,7 +22,7 @@ const Page = async () => {
             <Breadcrumb>
               <BreadcrumbList className='sm:text-xl text-sm'>
                 <BreadcrumbItem>
-                  <BreadcrumbLink>
+                  <BreadcrumbLink asChild>
                     <Link href='/'>Home</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
@@ -36,11 +35,10 @@ const Page = async () => {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <div className='sm:px-[15vw] px-[5vw]'>
+          <div className='mx-auto w-full max-w-4xl px-4 sm:px-6'>
             <AboutMe />
             <AboutTechstack />
             <AboutTimeline />
-            <AboutLinks />
           </div>
         </div>
       </div>

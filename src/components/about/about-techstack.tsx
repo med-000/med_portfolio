@@ -29,39 +29,37 @@ export const AboutTechstack = async () => {
     }),
   );
   return (
-    <section className='space-y-4 py-[1vw]'>
+    <section className='space-y-6 py-[1vw]'>
       <div className='flex items-center gap-4'>
         <span className='sm:text-4xl text-2xl font-semibold'>Techstack</span>
         <div className='flex-1 border-b' />
       </div>
 
-      <div className='mx-auto max-w-4xl'>
-        <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 place-items-center items-stretch'>
-          {techstackTypesWithRelations.map(
-            ({ techstackType, techstackPages }) => (
-              <Card className='w-full max-w-xs py-4' key={techstackType.id}>
-                <div className='sm:text-3xl text-2xl font-bold text-center mb-3'>
-                  {techstackType.title}
-                </div>
+      <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
+        {techstackTypesWithRelations.map(
+          ({ techstackType, techstackPages }) => (
+            <Card className='w-full py-4' key={techstackType.id}>
+              <div className='sm:text-3xl text-2xl font-bold text-center mb-3'>
+                {techstackType.title}
+              </div>
 
-                <div className='flex flex-row flex-wrap sm:flex-col sm:flex-nowrap justify-center sm:justify-start gap-3 px-4'>
-                  {techstackPages.map((techstack) => (
-                    <div key={techstack.id} className='flex items-center gap-2'>
-                      <img
-                        className='size-10 shrink-0'
-                        src={`https://skillicons.dev/icons?i=${techstack.content}`}
-                        alt={techstack.title}
-                      />
-                      <span className='hidden sm:inline text-lg font-semibold'>
-                        {techstack.title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ),
-          )}
-        </div>
+              <div className='flex flex-row flex-wrap sm:flex-col sm:flex-nowrap justify-center sm:justify-start gap-3 px-4'>
+                {techstackPages.map((techstack) => (
+                  <div key={techstack.id} className='flex items-center gap-2'>
+                    <img
+                      className='size-10 shrink-0'
+                      src={`https://skillicons.dev/icons?i=${techstack.content}`}
+                      alt={techstack.title}
+                    />
+                    <span className='hidden sm:inline text-lg font-semibold'>
+                      {techstack.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          ),
+        )}
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ChevronRight } from "lucide-react";
+import { SiGithub, SiX } from "react-icons/si";
+import { Menu, ChevronRight, Mail } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -24,11 +25,6 @@ export const Header = () => {
     // { href: "/timeline", label: "Timeline" },
     { href: "/project", label: "Projects" },
     // { href: "/blog", label: "Blogs" },
-  ];
-  const socialLinks = [
-    { href: "https://github.com/med-000", label: "GitHub" },
-    { href: "mailto:med.rk000@gmail.com", label: "Gmail" },
-    { href: "https://x.com/med_rk000", label: "Twitter" },
   ];
   return (
     <header className='sticky flex items-center top-0 px-[5vw] py-[3vw] bg-background z-50'>
@@ -81,17 +77,17 @@ export const Header = () => {
                 <span className='text-2xl font-semibold'>Links</span>
                 <div className='flex-1 border-b' />
               </div>
-              {socialLinks.map((socialLink) => (
-                <Link
-                  key={socialLink.label}
-                  className='flex items-center gap-2 font-bold text-sm px-5'
-                  href={socialLink.href}
-                  target='_blank'
-                >
-                  <ChevronRight className='size-4' />
-                  {socialLink.label}
+              <div className='flex gap-3 items-center'>
+                <Link href='https://github.com/med-000' target='_blank'>
+                  <SiGithub className='size-6 hover:text-foreground transition' />
                 </Link>
-              ))}
+                <Link href='mailto:med.rk000@gmail.com' target='_blank'>
+                  <Mail className='size-6 hover:text-foreground transition' />
+                </Link>
+                <Link href='https://x.com/med_rk000' target='_blank'>
+                  <SiX className='size-6 hover:text-foreground transition' />
+                </Link>
+              </div>
             </div>
           </div>
         </SheetContent>

@@ -3,14 +3,14 @@ import { Card } from "@/components/ui/card";
 
 export const AboutMe = () => {
   return (
-    <section className='space-y-6 py-[1vw]'>
+    <section className='space-y-6 py-[1vw]' id='Profile'>
       <div className='flex items-center gap-4'>
         <span className='sm:text-4xl text-2xl font-semibold'>Profile</span>
         <div className='flex-1 border-b-2' />
       </div>
 
       <div className='flex justify-center'>
-        <Card className='w-full max-w-4xl px-[5vw] py-8'>
+        <Card className='w-full p-8'>
           <div className='flex flex-col md:flex-row gap-10 items-center'>
             <div className='flex-1 flex flex-col gap-6 order-1'>
               <h2 className='sm:text-6xl sm:text-left text-center text-5xl font-bold'>
@@ -33,7 +33,7 @@ export const AboutMe = () => {
                 <li>東京電機大学</li>
               </ul>
 
-              <p className='sm:text-xl text-lg leading-relaxed'>
+              {/* <p className='sm:text-xl text-lg leading-relaxed'>
                 大学入学をきっかけにプログラミングへ興味を持ち、
                 Web開発・インフラ・インターネットの領域を中心に学習しています。
               </p>
@@ -41,7 +41,7 @@ export const AboutMe = () => {
               <p className='sm:text-xl text-lg leading-relaxed'>
                 フルスタックおよびインフラエンジニアを目指し、
                 インターンやプロダクト開発に取り組んでいます。
-              </p>
+              </p> */}
             </div>
 
             <div className='hidden md:flex justify-center order-2'>
