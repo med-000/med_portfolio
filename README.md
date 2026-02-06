@@ -7,8 +7,6 @@ Web開発を中心に、これまで取り組んできたプロジェクトや�
 🔗 **Live Site**: https://med-000.com/  
 📂 **Repository**: https://github.com/med-000/med_portfolio
 
----
-
 ## Overview
 
 このサイトは、これまでに取り組んできた **プロジェクト・技術・学習の軌跡** を  
@@ -21,8 +19,6 @@ Notion のデータベース機能を CMS として利用しており、
 - 技術スタックの整理・可視化
 - Markdown によるコンテンツ管理
 - モダンな UI / UX を意識した設計
-
----
 
 ## Tech Stack
 
@@ -66,8 +62,6 @@ Notion のデータベース機能を CMS として利用しており、
 - 🎨 **Responsive UI**  
   PC / Mobile の両方に対応したレイアウト設計
 
----
-
 ## Project Structure
 
 ```
@@ -97,16 +91,12 @@ Notion のデータベース機能を CMS として利用しており、
 └── tsconfig.json
 ```
 
----
-
 ## Design Concept
 
 - 情報を詰め込みすぎない
 - 「読む」「見る」「行動する」の導線を明確に
 - 装飾よりも **配置・余白・情報構造** を重視
 - ダークトーンを基調とした落ち着いた UI
-
----
 
 ## Development Notes
 
@@ -115,8 +105,6 @@ Notion のデータベース機能を CMS として利用しており、
 - UI コンポーネントは shadcn/ui をベースにカスタマイズ
 - 再利用性と可読性を意識したディレクトリ設計
 
----
-
 ## Future Improvements
 
 - ブログ機能の拡張
@@ -124,15 +112,11 @@ Notion のデータベース機能を CMS として利用しており、
 - アニメーション表現の整理
 - 多言語対応（EN / JP）
 
----
-
 ## Author
 
 - Name: med
 - GitHub: https://github.com/med-000
 - Website: https://med-000.com
-
----
 
 ## License
 
