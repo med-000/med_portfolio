@@ -42,8 +42,6 @@ Notion のデータベース機能を CMS として利用しており、
 - ESLint / Biome
 - GitHub
 
----
-
 ## Features
 
 - 📄 **Project Pages**  
