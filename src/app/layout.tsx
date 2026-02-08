@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html>
       <body
+        lang='ja'
         className={`${oxanium.variable} ${outfit.variable} ${sawarabi.variable} antialiased`}
       >
         {children}
