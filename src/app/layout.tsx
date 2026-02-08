@@ -29,9 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang='ja'>
       <body
-        lang='ja'
         className={`${oxanium.variable} ${outfit.variable} ${sawarabi.variable} antialiased`}
       >
         {children}
